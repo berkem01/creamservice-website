@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>CreamService Dienstleistungen – Gebäudereinigung & Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CreamService Dienstleistungen – Gebäudedienstleistungen, Personaldienstleistungen und Busfahrtkontrollen. Jung, dynamisch, flexibel und deutschlandweit im Einsatz.">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f5f7fb;
+      --card-bg: #ffffff;
+
+      --primary: #111827;
+      --muted: #6b7280;
+      --accent: #00aeea;
+      --accent-dark: #0084c7;
+      --accent-soft: rgba(0, 174, 234, 0.12);
+
+      --border: #e5e7eb;
+
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* =================== HEADER (so lassen) =================== */
+
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-right: 3rem; /* etwas Luft zum Menü */
+    }
+
+    .brand-logo {
+      height: auto;
+      width: 140px;
+      display: block;
+      flex-shrink: 0;    /* Flexbox darf es NICHT zusammenschieben */
+      min-width: 80px;   /* Sicherheitsnetz, damit es nie 0 wird */
+
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-right {
+      margin-left: auto;              /* schiebt Social + CTA nach ganz rechts */
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+    .nav-social {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(156, 163, 175, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    cursor: pointer;
+    transition: background 0.15s ease-out,
+                transform 0.1s ease-out,
+                box-shadow 0.1s ease-out,
+                border-color 0.15s ease-out;
+    }
+
+    .nav-social img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    }
+
+    .nav-social:hover {
+    background: #111827;
+    border-color: #111827;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
+    }
+
+    .nav-social:hover img {
+    filter: invert(1); /* Icon wird weiß auf dunklem Hintergrund */
+    }
+
+
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+      color: #4b5563;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      transition: width 0.15s ease-out;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .badge {
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.8rem;
+      border: 1px solid rgba(156, 163, 175, 0.7);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      background: #f9fafb;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      color: #f9fafb;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.1s ease-out, box-shadow 0.1s ease-out, background 0.1s ease-out;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.25);
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent-dark);
+      border-color: rgba(156, 163, 175, 0.9);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      background: rgba(219, 234, 254, 0.9);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      padding: 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 163, 175, 0.8);
+      background: rgba(249, 250, 251, 0.96);
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #111827;
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-toggle span::before { top: -4px; }
+    .menu-toggle span::after  { top:  4px; }
+
+    /* =================== HERO – ähnlich Tepas =================== */
+
+    main { flex: 1; }
+
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      padding-top: 8rem;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(to right, #f9fafb 0%, #f9fafb 52%, #e5f3fb 100%);
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.6rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title span {
+      display: block;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      font-size: 0.9em;
+      color: #374151;
+      text-transform: none;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 34rem;
+      color: var(--muted);
+      margin-top: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta strong {
+      color: var(--primary);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-figure {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5e7eb;
+      background: #000;
+      position: relative;
+    }
+
+    .hero-figure::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.4), transparent 35%);
+    }
+
+    .hero-figure-img {
+      aspect-ratio: 4 / 3;
+      background-image: url("assets/hero-cleaning-team.webp");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-figure-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-figure-caption span {
+      opacity: 0.9;
+    }
+
+    .hero-figure-badge {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.7rem;
+      border: 1px solid rgba(156, 163, 175, 0.6);
+      font-size: 0.72rem;
+    }
+
+    /* =================== SECTIONS =================== */
+
+    section { padding: 3.2rem 0; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-kicker {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #111827;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    /* =================== SERVICE – ähnlich Tepas „Unser Service“ =================== */
+
+    #leistungen {
+      background: var(--bg-alt);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .service-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: #000;
+      cursor: default;
+    }
+
+    .service-media {
+      aspect-ratio: 4 / 3;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8);
+    }
+
+    .service-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.1));
+    }
+
+    .service-content {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.1rem 1.1rem 1.2rem;
+      color: #f9fafb;
+    }
+
+    .service-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.9;
+    }
+
+    .service-title {
+      font-size: 1.02rem;
+      margin-top: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .service-text {
+      font-size: 0.82rem;
+      opacity: 0.9;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-more {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* =================== UNTERNEHMEN =================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.1rem;
+    }
+
+    .about-text p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+    }
+
+    .about-pill {
+      border-radius: var(--radius-full);
+      padding: 0.2rem 0.7rem;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--muted);
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .about-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .about-card em {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* =================== EINSATZORTE – ähnlich Tepas =================== */
+
+    #gebiete {
+      background: #ffffff;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .einsatz-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .einsatz-map {
+      border-radius: 20px;
+      background: linear-gradient(135deg, #e0f2fe, #f5f7fb);
+      padding: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .einsatz-map-inner {
+      border-radius: 14px;
+      background-image: url("assets/map-germany.jpg");
+      background-size: cover;
+      background-position: center;
+      aspect-ratio: 4 / 3;
+    }
+
+    .einsatz-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .einsatz-list {
+      font-size: 0.86rem;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .einsatz-list span::before {
+      content: "• ";
+      color: var(--accent-dark);
+    }
+
+    /* =================== VIDEO =================== */
+
+    #video {
+      background: var(--bg-alt);
+    }
+
+    .video-wrapper {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .video-box {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 0.9rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .video-box video {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .video-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .video-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .video-badge {
+      border-radius: var(--radius-full);
+      padding: 0.2rem 0.7rem;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: #4b5563;
+    }
+
+    /* =================== KUNDEN / ZUSAMMENARBEIT =================== */
+
+    #kunden {
+      background: #ffffff;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.3rem;
+    }
+
+    .value-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1rem;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .value-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    #zusammenarbeit {
+      background: var(--bg-alt);
+    }
+
+/* ========= Partner-Logos: breiter, dezenter Streifen ========= */
+
+    .partner-slider {
+    margin-top: 2.4rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to bottom, #ffffff, #f9fafb);
+    overflow: hidden;
+    }
+
+    .partner-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;                  /* Abstand zwischen Logos */
+    width: max-content;         /* so breit wie Inhalt */
+    animation: partner-marquee 38s linear infinite;
+    }
+
+    .partner-logo {
+    flex-shrink: 0;
+    height: 42px;               /* „langgezogen“: eher flach, aber breit */
+    opacity: 0.75;              /* leicht transparent */
+    
+    transition: opacity 0.2s ease-out,
+                
+                transform 0.2s ease-out;
+    }
+
+    .partner-logo:hover {
+    opacity: 1;               /* beim Hover klar & deutlich */
+    
+    transform: translateY(-2px);
+    }
+
+    .partner-slider:hover .partner-track {
+    animation-play-state: paused;   /* auf Hover pausieren */
+    }
+
+    @keyframes partner-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }  /* zweite Hälfte ist Kopie der ersten */
+    }
+
+
+
+    /* =================== KONTAKT – ähnlich Tepas unten =================== */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.0fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-details {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .contact-details a { color: var(--accent-dark); }
+
+    .contact-highlight {
+      border-radius: var(--radius-lg);
+      padding: 0.9rem 1rem;
+      border: 1px dashed rgba(156, 163, 175, 0.9);
+      background: #fefefe;
+      font-size: 0.82rem;
+    }
+
+    .contact-form {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.86rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.5rem 0.6rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(156, 163, 175, 0.9);
+      background: #ffffff;
+      color: var(--primary);
+      font: inherit;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .checkbox-row input { margin-top: 0.1rem; }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 18rem;
+    }
+
+    .contact-badge-card {
+      margin-top: 1rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+      background: #f9fafb;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .contact-badge-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    /* =================== FOOTER =================== */
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background: #ffffff;
+      padding: 1.4rem 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    /* =================== SCROLL ANIMATION =================== */
+
+    .reveal,
+    .reveal-left,
+    .reveal-right {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .reveal-left  { transform: translateX(-24px); }
+    .reveal-right { transform: translateX( 24px); }
+
+    .visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    /* =================== RESPONSIVE =================== */
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual { order: -1; }
+
+      .services-grid,
+      .about-grid,
+      .einsatz-grid,
+      .video-wrapper,
+      .value-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 5rem;
+      }
+    }
+
+    @media (max-width: 780px) {
+    .nav-links,
+    .nav-right,
+    .nav-cta { display: none; }
+
+    .menu-toggle { display: inline-flex; }
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.7rem 1.5rem 1rem;
+        background: #ffffff;
+        border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-4px);
+        transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .nav.open .nav-links,
+    .nav.open .nav-right,
+    .nav.open .nav-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+  .form-row { grid-template-columns: minmax(0, 1fr); }
+}
+
+    @media (max-width: 520px) {
+      .section-header { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ========== HEADER (unverändert bis auf brand-text) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="assets/logo.png" alt="CreamService Logo" class="brand-logo">
+      </a>
+
+      <button class="menu-toggle" aria-label="Menü öffnen oder schließen">
+        <span></span>
+      </button>
+
+      <nav class="nav">
+  <div class="nav-links">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#unternehmen">Unternehmensprofil</a>
+    <a href="#video">Einblick</a>
+    <a href="#kunden">Kundenportfolio</a>
+    <a href="#zusammenarbeit">Zusammenarbeit</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+
+  <div class="nav-right">
+    <!-- Instagram-Icon / Link ganz rechts -->
+    <a href="https://www.instagram.com/creamservice.gmbh" 
+    class="nav-social" 
+    target="_blank" 
+    rel="noopener"
+    aria-label="CreamService auf Instagram">
+    <img src="assets/ig-instagram-icon.png" alt="">
+    </a>
+
+
+
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+  <!-- ========== HERO (Startseite ähnlich Tepas) ========== -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="reveal-left">
+          <div class="hero-kicker">we do clean better</div>
+          <h1 class="hero-title">
+            Ihr Partner für moderne Dienst­leistungen.
+            <span>Gebäudedienstleistungen, Personal & Busfahrt­kontrollen – aus einer Hand.</span>
+          </h1>
+          <p class="hero-subtitle">
+            CreamService ist ein junges, dynamisches Unternehmen, das neue Wege in
+            der Dienstleistungsbranche geht. Wir kombinieren professionelle
+            Gebäudereinigung mit flexiblen Personallösungen und spezialisierten
+            Kontrolldiensten.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#leistungen" class="btn">Unser Service</a>
+            <a href="#kontakt" class="btn btn-outline">Direkt anfragen</a>
+          </div>
+          <div class="hero-meta">
+            <strong>Seit Gründung</strong> mit einem Ziel: starke Dienstleistungen
+            zu einem fairen Preis – damit Sie sich auf Ihr Kerngeschäft
+            konzentrieren können.
+          </div>
+        </div>
+
+        <div class="hero-visual reveal-right">
+          <div class="hero-figure">
+            <div class="hero-figure-img"></div>
+            <div class="hero-figure-caption">
+              <span>Gebäudereinigung & Glasreinigung im laufenden Betrieb.</span>
+              <span class="hero-figure-badge">CreamService im Einsatz</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LEISTUNGEN / UNSER SERVICE  ========== -->
+    <section id="leistungen">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Unser Service</div>
+            <h2 class="section-title">Gebäude, Personal & Kontrollen.</h2>
+            <p class="section-subtitle">
+              Drei Leistungsbereiche bilden das Portfolio von CreamService –
+              klar strukturiert wie bei Tepas, aber mit eurem eigenen Profil.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <!-- Gebäudedienstleistungen -->
+          <article class="service-card reveal">
+            <div class="service-media"
+                 style="background-image:url('assets/glasreinigung-klinke-han-gebauedereinigung-hamburg.webp');"></div>
+            <div class="service-overlay"></div>
+            <div class="service-content">
+              <div class="service-label">Gebäudedienstleistungen</div>
+              <div class="service-title">Gebäudereinigung & Spezialreinigung</div>
+              <p class="service-text">
+                Unterhalts-, Grund- und Glasreinigung, Treppenhäuser, Büros,
+                Hausmeisterservice, Winterdienst, Bauendreinigung und mehr.
+              </p>
+              <div class="service-more">mehr erfahren ▸</div>
+            </div>
+          </article>
+
+          <!-- Personaldienstleistungen -->
+          <article class="service-card reveal">
+            <div class="service-media"
+                 style="background-image:url('assets/männlicher-sicherheitsbeamter-mit-kopfhörern-im-nachtclub.webp');"></div>
+            <div class="service-overlay"></div>
+            <div class="service-content">
+              <div class="service-label">Personaldienstleistungen</div>
+              <div class="service-title">Personal für Service & Sicherheit</div>
+              <p class="service-text">
+                Sicherheitspersonal, Servicekräfte, Reinigungspersonal und
+                Hilfsarbeiter – temporär oder dauerhaft, je nach Bedarf.
+              </p>
+              <div class="service-more">mehr erfahren ▸</div>
+            </div>
+          </article>
+
+          <!-- Busfahrtkontrollen -->
+          <article class="service-card reveal">
+            <div class="service-media"
+                 style="background-image:url('assets/service-buskontrolle.jpg');"></div>
+            <div class="service-overlay"></div>
+            <div class="service-content">
+              <div class="service-label">Busfahrtkontrollen</div>
+              <div class="service-title">Kontrollen im öffentlichen Verkehr</div>
+              <p class="service-text">
+                Fahrausweis- und Qualitätskontrollen, Fahrgastzählungen und
+                Unterstützung bei Fahrplan­umstellungen.
+              </p>
+              <div class="service-more">mehr erfahren ▸</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== UNTERNEHMENSPROFIL ========== -->
+    <section id="unternehmen">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Unternehmensprofil</div>
+            <h2 class="section-title">Wir gehen neue Wege.</h2>
+            <p class="section-subtitle">
+              Inhaltlich aus eurer Präsentation – visuell etwas cleaner, damit es zur Startseite passt.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text reveal-left">
+            <p>
+              CreamService geht bewusst neue Wege in einer traditionellen
+              Branche. Wir nutzen moderne Kommunikationswege, reagieren schnell
+              auf Anforderungen und gestalten Dienstleistungen so, wie sie in
+              der Praxis wirklich gebraucht werden.
+            </p>
+            <p>
+              Langfristig wollen wir den Namen CreamService im Markt etablieren
+              und uns als verlässlichen Partner für Gebäudedienstleistungen,
+              Personaldienstleistungen und Kontrolldienste positionieren.
+            </p>
+            <div class="about-pill-row">
+              <span class="about-pill">Jung & dynamisch</span>
+              <span class="about-pill">Kundenorientiert</span>
+              <span class="about-pill">Fair & transparent</span>
+              <span class="about-pill">Bereit für neue Ideen</span>
+            </div>
+          </div>
+
+          <aside class="about-card reveal-right">
+            <strong>„Unser Ziel ist es, Ihnen eine hervorragende Dienstleistung zu einem angemessenen Preis zu bieten.“</strong>
+            <p>
+              Damit Sie sich auf die wichtigen Dinge in Ihrem Geschäft
+              konzentrieren können, übernehmen wir die Organisation rund um
+              Reinigung, Personal und Kontrollen – strukturiert, transparent
+              und zuverlässig.
+            </p>
+            <em>CreamService Dienstleistungen</em>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EINSATZORTE  ========== -->
+    <section id="gebiete">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Einsatzorte</div>
+            <h2 class="section-title">Deutschlandweit im Einsatz.</h2>
+            <p class="section-subtitle">
+              Wie bei Tepas: ein klarer Block zu Regionen und Einsatzgebieten –
+              nur mit euren Formulierungen.
+            </p>
+          </div>
+        </div>
+
+        <div class="einsatz-grid">
+          <div class="einsatz-map reveal-left">
+            <div class="einsatz-map-inner">
+                <img src="assets/germany-country-flag-location-png.webp" alt="">
+            </div>
+          </div>
+          <div class="einsatz-text reveal-right">
+            <p>
+              Von unserem Sitz in Mainz aus betreuen wir Kunden im gesamten
+              Bundesgebiet. Je nach Leistungsbereich organisieren wir Einsätze
+              regional oder überregional – immer abgestimmt auf die
+              Anforderungen des jeweiligen Projekts.
+            </p>
+            <div class="einsatz-list">
+              <span>Rhein-Main-Region und angrenzende Gebiete</span>
+              <span>Städte und Ballungsräume mit Bedarf an professioneller Reinigung</span>
+              <span>Einsatzorte für Busfahrtkontrollen nach Vorgabe des Auftraggebers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EINBLICK (Video) ========== -->
+    <section id="video">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Einblick</div>
+            <h2 class="section-title">Glas- & Rahmenreinigung im Einsatz.</h2>
+            <p class="section-subtitle">
+              Dein Video aus der Präsentation – als moderner Einblick in die Praxis.
+            </p>
+          </div>
+        </div>
+
+        <div class="video-wrapper">
+          <div class="video-box reveal-left">
+            <video autoplay loop controls muted poster="assets/video-poster.jpg">
+              <source src="assets/cream_reinigung.mp4" type="video/mp4">
+              Ihr Browser unterstützt das Video-Tag nicht.
+            </video>
+          </div>
+
+          <div class="video-text reveal-right">
+            <p>
+              Glas- und Rahmenreinigung ist ein Bereich, in dem die Qualität
+              sofort sichtbar wird. Das Video zeigt exemplarisch, wie sorgfältig
+              CreamService diese Arbeiten ausführt – vom Aufbau bis zum letzten Wisch.
+            </p>
+            <p>
+              Solche Einblicke verbinden die Präsentation mit der Realität vor
+              Ort und stärken das Vertrauen neuer Auftraggeber.
+            </p>
+            <div class="video-badges">
+              <span class="video-badge">Glas- & Rahmenreinigung</span>
+              <span class="video-badge">Professionelles Equipment</span>
+              <span class="video-badge">Sichere Abläufe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KUNDENPORTFOLIO ========== -->
+    <section id="kunden">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Kundenportfolio</div>
+            <h2 class="section-title">Mehr als 50 Kunden im Vertrauen.</h2>
+            <p class="section-subtitle">
+              Statt Logos wie bei Tepas hier ein neutraler, seriöser Überblick –
+              konkrete Namen könnt ihr später ergänzen.
+            </p>
+          </div>
+        </div>
+
+        <div class="value-grid">
+  <div class="value-card reveal">
+    <strong>Verkehrsunternehmen</strong>
+    <span>Busfahrtkontrollen, Qualitätskontrollen und Fahrgastzählungen.</span>
+  </div>
+  <div class="value-card reveal">
+    <strong>Immobilien & Wohnanlagen</strong>
+    <span>Unterhaltsreinigung, Treppenhäuser, Glasflächen und Außenbereiche.</span>
+  </div>
+  <div class="value-card reveal">
+    <strong>Gewerbeobjekte</strong>
+    <span>Büros, Lagerflächen und Sonderreinigungen nach Bedarf.</span>
+  </div>
+  <div class="value-card reveal">
+    <strong>Öffentlicher Bereich</strong>
+    <span>Individuelle Projekte mit klar definierten Leistungsumfängen.</span>
+  </div>
+</div>
+
+<!-- Slider kommt NACH dem Grid -->
+<div class="partner-slider reveal">
+  <div class="partner-track">
+    <!-- erster Durchlauf -->
+    <img src="assets/KRN.webp"                         alt="KRN"                     class="partner-logo">
+    <img src="assets/Logo-Wohnbau-Mainz-GmbH_4C-1.webp" alt="Wohnbau Mainz"          class="partner-logo">
+    <img src="assets/MainzerStadtwerke.gif"            alt="Mainzer Stadtwerke"      class="partner-logo">
+    <img src="assets/merkur-spielhalle_logo_300x300px-1.webp" alt="Merkur Spielhalle" class="partner-logo">
+    <img src="assets/stadtwerkebingen.jpg"             alt="Stadtwerke Bingen"       class="partner-logo">
+    <img src="assets/c339acae-74b2-479a-8a64-2b7c93c474a3.webp"             alt="Mainzer Immobilien"       class="partner-logo">
+    <img src="assets/qvest.webp"             alt="Qvest"       class="partner-logo">
+
+
+    <!-- zweiter Durchlauf (für Endlos-Animation – gleiche Reihenfolge nochmal) -->
+    <img src="assets/KRN.webp"                         alt="" aria-hidden="true" class="partner-logo">
+    <img src="assets/Logo-Wohnbau-Mainz-GmbH_4C-1.webp" alt="" aria-hidden="true" class="partner-logo">
+    <img src="assets/MainzerStadtwerke.gif"            alt="" aria-hidden="true" class="partner-logo">
+    <img src="assets/merkur-spielhalle_logo_300x300px-1.webp" alt="" aria-hidden="true" class="partner-logo">
+    <img src="assets/stadtwerkebingen.jpg"             alt="" aria-hidden="true" class="partner-logo">
+    <img src="assets/c339acae-74b2-479a-8a64-2b7c93c474a3.webp"             alt="Mainzer Immobilien"       class="partner-logo">
+    <img src="assets/qvest.webp"             alt="Qvest"       class="partner-logo">
+  </div>
+</div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ZUSAMMENARBEIT ========== -->
+    <section id="zusammenarbeit">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Erfolgreiche Zusammenarbeit</div>
+            <h2 class="section-title">Was uns wichtig ist.</h2>
+            <p class="section-subtitle">
+              Angelehnt an eure Präsentation: vier Kernpunkte, die Auftraggeber
+              auf einen Blick verstehen.
+            </p>
+          </div>
+        </div>
+
+        <div class="value-grid">
+          <div class="value-card reveal">
+            <strong>Klare Kommunikation</strong>
+            <span>Transparente Absprachen und feste Ansprechpartner.</span>
+          </div>
+          <div class="value-card reveal">
+            <strong>Zuverlässigkeit</strong>
+            <span>Termine, Qualität und Erreichbarkeit sind verbindlich geregelt.</span>
+          </div>
+          <div class="value-card reveal">
+            <strong>Flexibilität</strong>
+            <span>Reaktion auf wechselnde Anforderungen und Spitzenzeiten.</span>
+          </div>
+          <div class="value-card reveal">
+            <strong>Qualität</strong>
+            <span>Regelmäßige Kontrollen und stetige Verbesserungen im Ablauf.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KONTAKT / FOOTER-BEREICH (Tepas-ähnlich) ========== -->
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-header reveal">
+          <div>
+            <div class="section-kicker">Kontakt</div>
+            <h2 class="section-title">Wir sind für Sie da.</h2>
+
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details reveal-left">
+            <p>
+              <strong>CreamService Dienstleistungen</strong><br>
+              Kapuziner Straße 3–5<br>
+              55116 Mainz
+            </p>
+            <p>
+              Telefon: <a href="tel:+4917660832972">0176 608 32 972</a><br>
+              E-Mail: <a href="mailto:info@creamclean.de">info@creamclean.de</a><br>
+              Website: <a href="https://www.creamclean.de" target="_blank" rel="noopener">www.creamclean.de</a>
+            </p>
+            <p>
+              Sie erreichen uns werktags telefonisch oder jederzeit per E-Mail.
+              Gern nutzen Sie auch das Kontaktformular – wir melden uns schnell
+              mit Rückfragen oder einem Vorschlag zur weiteren Vorgehensweise.
+            </p>
+            <div class="contact-highlight">
+              Beschreiben Sie kurz, welche Flächen oder Projekte betreut werden
+              sollen und ab wann Sie Unterstützung benötigen.
+            </div>
+            <div class="contact-badge-card">
+              <div class="contact-badge-logo">
+                ISO<br>9001
+              </div>
+              <div>
+                <strong>Zertifizierungs­bereit.</strong><br>
+                CreamService orientiert sich an etablierten Standards der
+                Dienstleistungsbranche – eine Zertifizierung nach ISO 9001 ist
+                perspektivisch geplant.
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> CreamService Dienstleistungen. Alle Rechte vorbehalten.</div>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // aktuelles Jahr
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile-Navigation
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  // Smooth Scroll
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        nav.classList.remove("open");
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  });
+
+  // Scroll-Reveal-Effekte
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".reveal, .reveal-left, .reveal-right").forEach(el => {
+      observer.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
