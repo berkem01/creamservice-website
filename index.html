@@ -700,10 +700,8 @@
     /* =================== KONTAKT – ähnlich Tepas unten =================== */
 
     .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.0fr);
-      gap: 2rem;
-      align-items: flex-start;
+      display: block; /* Einfacher Block statt Grid, da das Formular rechts fehlt */
+      max-width: 600px;
     }
 
     .contact-details {
@@ -896,7 +894,7 @@
 
       .hero {
         min-height: auto;
-        padding-top: 5rem;
+        padding-top: 10rem;
       }
     }
 
@@ -944,6 +942,14 @@
     @media (max-width: 520px) {
       .section-header { align-items: flex-start; }
     }
+@media (max-width: 480px) {
+  .hero-figure-img {
+    aspect-ratio: 16 / 9; /* Flacheres Format für Handys */
+  }
+  .hero-title {
+    font-size: 1.8rem; /* Etwas kleiner, damit der Header nicht überlagert */
+  }
+}
   </style>
 </head>
 <body>
@@ -1054,7 +1060,7 @@
                 Unterhalts-, Grund- und Glasreinigung, Treppenhäuser, Büros,
                 Hausmeisterservice, Winterdienst, Bauendreinigung und mehr.
               </p>
-              <div class="service-more">mehr erfahren ▸</div>
+              <div class="service-more"></div>
             </div>
           </article>
 
@@ -1070,7 +1076,7 @@
                 Sicherheitspersonal, Servicekräfte, Reinigungspersonal und
                 Hilfsarbeiter – temporär oder dauerhaft, je nach Bedarf.
               </p>
-              <div class="service-more">mehr erfahren ▸</div>
+              <div class="service-more"></div>
             </div>
           </article>
 
@@ -1080,13 +1086,13 @@
                  style="background-image:url('assets/service-buskontrolle.jpg');"></div>
             <div class="service-overlay"></div>
             <div class="service-content">
-              <div class="service-label">Busfahrtkontrollen</div>
+              <div class="service-label">Prüfdienst</div>
               <div class="service-title">Kontrollen im öffentlichen Verkehr</div>
               <p class="service-text">
                 Fahrausweis- und Qualitätskontrollen, Fahrgastzählungen und
                 Unterstützung bei Fahrplan­umstellungen.
               </p>
-              <div class="service-more">mehr erfahren ▸</div>
+              <div class="service-more"></div>
             </div>
           </article>
         </div>
@@ -1101,7 +1107,7 @@
             <div class="section-kicker">Unternehmensprofil</div>
             <h2 class="section-title">Wir gehen neue Wege.</h2>
             <p class="section-subtitle">
-              Inhaltlich aus eurer Präsentation – visuell etwas cleaner, damit es zur Startseite passt.
+              
             </p>
           </div>
         </div>
@@ -1149,8 +1155,7 @@
             <div class="section-kicker">Einsatzorte</div>
             <h2 class="section-title">Deutschlandweit im Einsatz.</h2>
             <p class="section-subtitle">
-              Wie bei Tepas: ein klarer Block zu Regionen und Einsatzgebieten –
-              nur mit euren Formulierungen.
+             
             </p>
           </div>
         </div>
@@ -1186,7 +1191,7 @@
             <div class="section-kicker">Einblick</div>
             <h2 class="section-title">Glas- & Rahmenreinigung im Einsatz.</h2>
             <p class="section-subtitle">
-              Dein Video aus der Präsentation – als moderner Einblick in die Praxis.
+             
             </p>
           </div>
         </div>
@@ -1206,8 +1211,7 @@
               CreamService diese Arbeiten ausführt – vom Aufbau bis zum letzten Wisch.
             </p>
             <p>
-              Solche Einblicke verbinden die Präsentation mit der Realität vor
-              Ort und stärken das Vertrauen neuer Auftraggeber.
+             
             </p>
             <div class="video-badges">
               <span class="video-badge">Glas- & Rahmenreinigung</span>
@@ -1227,8 +1231,7 @@
             <div class="section-kicker">Kundenportfolio</div>
             <h2 class="section-title">Mehr als 50 Kunden im Vertrauen.</h2>
             <p class="section-subtitle">
-              Statt Logos wie bei Tepas hier ein neutraler, seriöser Überblick –
-              konkrete Namen könnt ihr später ergänzen.
+              
             </p>
           </div>
         </div>
@@ -1289,8 +1292,7 @@
             <div class="section-kicker">Erfolgreiche Zusammenarbeit</div>
             <h2 class="section-title">Was uns wichtig ist.</h2>
             <p class="section-subtitle">
-              Angelehnt an eure Präsentation: vier Kernpunkte, die Auftraggeber
-              auf einen Blick verstehen.
+             
             </p>
           </div>
         </div>
