@@ -878,6 +878,74 @@
       transform: translate(0, 0);
     }
 
+    /* =================== WARUM CREAMSERVICE (Clean B2B Grid) =================== */
+    
+    #warum-wir {
+      background: var(--bg-alt); /* Dezentes Grau, trennt sich gut vom weißen Portfolio */
+      border-top: 1px solid var(--border);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.2rem;
+    }
+
+    .benefit-card {
+      background: var(--card-bg); /* Weiße Kacheln */
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.6rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 40px rgba(15, 23, 42, 0.08);
+      border-color: rgba(0, 174, 234, 0.3); /* Ganz dezenter blauer Rahmen beim Drüberfahren */
+    }
+
+    .benefit-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--accent-soft); /* Das helle CreamService-Blau aus deinen Variablen */
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .benefit-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Responsive Anpassungen */
+    @media (max-width: 960px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .benefits-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
     /* =================== RESPONSIVE =================== */
 
     @media (max-width: 960px) {
@@ -1294,35 +1362,53 @@
       </div>
     </section>
 
-    <!-- ========== ZUSAMMENARBEIT ========== -->
-    <section id="zusammenarbeit">
+    <section id="warum-wir">
       <div class="container">
         <div class="section-header reveal">
           <div>
-            <div class="section-kicker">Erfolgreiche Zusammenarbeit</div>
-            <h2 class="section-title">Was uns wichtig ist.</h2>
+            <div class="section-kicker">Ihre Vorteile</div>
+            <h2 class="section-title">Warum CreamService?</h2>
             <p class="section-subtitle">
-             
+              Verlässlichkeit, die man sieht. Wir lösen die typischen Engpässe und Qualitätsprobleme im Facility Management.
             </p>
           </div>
         </div>
 
-        <div class="value-grid">
-          <div class="value-card reveal">
-            <strong>Klare Kommunikation</strong>
-            <span>Transparente Absprachen und feste Ansprechpartner.</span>
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">🚆</div>
+            <h3>Stark im ÖPNV & Gewerbe</h3>
+            <p>Gebäudereinigung, Personalgestellung und Busfahrtkontrollen aus einer Hand. Wir managen Logistik effizient.</p>
           </div>
-          <div class="value-card reveal">
-            <strong>Zuverlässigkeit</strong>
-            <span>Termine, Qualität und Erreichbarkeit sind verbindlich geregelt.</span>
+
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">📞</div>
+            <h3>Fester Ansprechpartner</h3>
+            <p>Keine endlosen Hotline-Schleifen. Ein direkter Kontakt für schnelle, verbindliche Lösungen vor Ort.</p>
           </div>
-          <div class="value-card reveal">
-            <strong>Flexibilität</strong>
-            <span>Reaktion auf wechselnde Anforderungen und Spitzenzeiten.</span>
+
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">👥</div>
+            <h3>Geschultes Personal</h3>
+            <p>Ob feste Teams oder flexible Einsätze: Wir reagieren schnell auf Personalengpässe und garantieren Ausfallsicherheit.</p>
           </div>
-          <div class="value-card reveal">
-            <strong>Qualität</strong>
-            <span>Regelmäßige Kontrollen und stetige Verbesserungen im Ablauf.</span>
+
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">🔍</div>
+            <h3>Strenge Qualitätskontrolle</h3>
+            <p>Unsere Vorarbeiter führen regelmäßige Checks durch – damit das Ergebnis ohne Ihr ständiges Nachhaken stimmt.</p>
+          </div>
+
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">💶</div>
+            <h3>Transparente Preise</h3>
+            <p>Klare Kalkulationen ohne versteckte Kosten. Sie zahlen nur die Leistungen, die vertraglich vereinbart wurden.</p>
+          </div>
+
+          <div class="benefit-card reveal">
+            <div class="benefit-icon">🏢</div>
+            <h3>Über 50 betreute Objekte</h3>
+            <p>Erprobte Prozesse durch die langjährige Zusammenarbeit mit Hausverwaltungen und großen Verkehrsunternehmen.</p>
           </div>
         </div>
       </div>
