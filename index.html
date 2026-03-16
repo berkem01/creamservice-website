@@ -575,7 +575,7 @@
       color: var(--accent-dark);
     }
 
-    /* =================== VIDEO =================== */
+/* =================== VIDEO =================== */
 
     #video {
       background: var(--bg-alt);
@@ -583,8 +583,9 @@
 
     .video-wrapper {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2rem;
+      /* NEU: Das Video bekommt weniger Platz (ca. 35%), der Text mehr (65%) */
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+      gap: 3.5rem;
       align-items: center;
     }
 
@@ -594,6 +595,9 @@
       padding: 0.9rem;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
+      /* NEU: Deckelt die maximale Breite, damit es auf großen Monitoren nicht riesig wird */
+      max-width: 340px; 
+      margin: 0 auto; /* Zentriert die Box in ihrer Spalte */
     }
 
     .video-box video {
@@ -603,10 +607,31 @@
     }
 
     .video-text {
-      font-size: 0.9rem;
+      font-size: 0.95rem; /* Etwas größer für bessere Lesbarkeit */
       color: var(--muted);
       display: grid;
-      gap: 0.8rem;
+      gap: 1.2rem;
+    }
+
+    .video-features {
+      list-style: none;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .video-features li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    .video-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dark);
+      font-weight: bold;
     }
 
     .video-badges {
@@ -614,8 +639,10 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       font-size: 0.75rem;
+      margin-bottom: 0.8rem;
     }
 
+    /* Bestehende Badges bleiben gleich */
     .video-badge {
       border-radius: var(--radius-full);
       padding: 0.2rem 0.7rem;
@@ -1276,25 +1303,32 @@
 
         <div class="video-wrapper">
           <div class="video-box reveal-left">
-            <video autoplay loop controls muted poster="assets/video-poster.jpg">
-              <source src="assets/cream_reinigung.mp4" type="video/mp4">
+            <video autoplay loop muted playsinline poster="assets/video-poster.jpg">
+              <source src="assets/Glas- und Rahmenreinigung CreamService.mp4" type="video/mp4">
               Ihr Browser unterstützt das Video-Tag nicht.
             </video>
           </div>
 
           <div class="video-text reveal-right">
             <p>
-              Glas- und Rahmenreinigung ist ein Bereich, in dem die Qualität
-              sofort sichtbar wird. Das Video zeigt exemplarisch, wie sorgfältig
-              CreamService diese Arbeiten ausführt – vom Aufbau bis zum letzten Wisch.
+              Glas- und Rahmenreinigung ist ein Bereich, in dem die Qualität sofort sichtbar wird. 
+              Wir überlassen nichts dem Zufall und setzen auf geschultes Personal sowie professionelles Equipment – vom Aufbau bis zum letzten Wisch.
             </p>
-            <p>
-             
-            </p>
+            
+            <ul class="video-features">
+              <li>Streifenfreie Reinigung im laufenden Betrieb</li>
+              <li>Arbeiten mit professioneller Steiger- und Hubtechnik</li>
+              <li>Höchste Arbeitssicherheitsstandards</li>
+            </ul>
+
             <div class="video-badges">
               <span class="video-badge">Glas- & Rahmenreinigung</span>
-              <span class="video-badge">Professionelles Equipment</span>
+              <span class="video-badge">Industrieklettern / Steiger</span>
               <span class="video-badge">Sichere Abläufe</span>
+            </div>
+
+            <div>
+              <a href="#kontakt" class="btn">Jetzt Objektbesichtigung anfragen</a>
             </div>
           </div>
         </div>
