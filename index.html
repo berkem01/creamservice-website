@@ -349,14 +349,18 @@
       bottom: 0;
       padding: 0.9rem 1.1rem;
       font-size: 0.78rem;
-      color: #e5e7eb;
+      color: #ffffff !important;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 10;
+      /* Text-Schatten für bessere Lesbarkeit auf unruhigem Glas-Hintergrund */
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     }
 
     .hero-figure-caption span {
       opacity: 0.9;
+      font-weight: 500;
     }
 
     .hero-figure-badge {
